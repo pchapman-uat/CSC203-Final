@@ -15,10 +15,13 @@ public class ReminderPan extends JPanel{
     JTextArea content = new JTextArea();
     JLabel date = new JLabel();
     JLabel id = new JLabel();
+    DatePan datePannel = new DatePan(this.frameHeight, this.frameWidth);
+
     public ReminderPan(int frameHeight, int frameWidth) {
         this.frameHeight = frameHeight;
         this.frameWidth = frameWidth;
         this.title.setText("Title");
+        this.add(this.datePannel);
         this.add(this.title);
         this.add(this.content);
         this.add(date);
@@ -32,18 +35,25 @@ public class ReminderPan extends JPanel{
         return new Reminder(id, title, content, date);
     }
 
+    public void setValues(Reminder reminder){
+        this.setTitle(reminder.title);
+        this.setContent(reminder.content);
+        this.setID(reminder.id);
+        this.setDate(reminder);
+    }
 
-    public void setTitle(String title){
+    private void setTitle(String title){
         this.title.setText(title);
     }
-    public void setContent(String content){
+    private void setContent(String content){
         this.content.setText(content);
     }
-    public void setID(Integer id){
+    private void setID(Integer id){
         this.id.setText(String.valueOf(id));
     }
-    public void setDate(String date){
-        this.date.setText(date);
+    private void setDate(Reminder reminder){
+        this.date.setText(reminder.date.dateString);
+        this.datePannel.setDateVals(reminder);
     }
 
 }
