@@ -1,13 +1,14 @@
+package Classes;
 import java.sql.*;
 import java.util.ArrayList;
 
-import Classes.Reminder;
+import static mainScreen.Screen.currentReminder;
 
 public class SQL {
     public Connection connection = null;
     public Statement statement = null;
     private String createTableSQL = "CREATE TABLE IF NOT EXISTS reminders (id INTEGER PRIMARY KEY, title TEXT, content TEXT, date TEXT, day INT, month INT, year INT, priority TEXT DEFAULT WHITE)";
-    SQL(){
+    public SQL(){
         try {
             this.connection = DriverManager.getConnection("jdbc:sqlite:db/data.sqlite3");
             this.statement = connection.createStatement();
@@ -40,14 +41,14 @@ public class SQL {
         return allReminders;
     }
 
-    public void updateItem(Reminder reminder){
+    public void updateItem(){
         System.out.println("Updating Note");
         String statement = "UPDATE reminders SET title = ?, content = ? WHERE id = ?";
         try (PreparedStatement pstmt = this.connection.prepareStatement(statement)) {
             {
-                pstmt.setString(1, reminder.title);
-                pstmt.setString(2, reminder.content);
-                pstmt.setInt(3, reminder.id);
+                pstmt.setString(1, currentReminder.title);
+                pstmt.setString(2, currentReminder.content);
+                pstmt.setInt(3, currentReminder.id);
 
                 pstmt.executeUpdate();
             }

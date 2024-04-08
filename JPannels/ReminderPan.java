@@ -1,6 +1,7 @@
 package JPannels;
 import Classes.Date;
 import Classes.Reminder;
+import static mainScreen.Screen.currentReminder;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,11 +36,12 @@ public class ReminderPan extends JPanel{
         return new Reminder(id, title, content, date);
     }
 
-    public void setValues(Reminder reminder){
-        this.setTitle(reminder.title);
-        this.setContent(reminder.content);
-        this.setID(reminder.id);
-        this.setDate(reminder);
+    public void setValues(){
+        
+        this.setTitle(currentReminder.title);
+        this.setContent(currentReminder.content);
+        this.setID(currentReminder.id);
+        this.setDate(currentReminder);
     }
 
     private void setTitle(String title){

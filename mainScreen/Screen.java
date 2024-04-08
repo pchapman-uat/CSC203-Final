@@ -1,12 +1,13 @@
+package mainScreen;
 
 import javax.swing.*;
 
 import Classes.Reminder;
+import Classes.SQL;
 
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 
-import JPannels.DatePan;
 import JPannels.ReminderPan;
 
 public class Screen extends JFrame{
@@ -19,19 +20,20 @@ public class Screen extends JFrame{
 
     JButton saveButton = new JButton();
 
-    Reminder currentReminder = null;
-    SQL sql = null;
+    public static Reminder currentReminder = null;
+
+    private SQL sql = new SQL();
+
     public void load() {
         ArrayList<Reminder> reminders = this.sql.queryTable();
-        this.currentReminder = reminders.get(0);
-        this.remindPannel.setValues(this.currentReminder);
+        Screen.currentReminder = reminders.get(0);
+        this.remindPannel.setValues();
     }
     public void save() {
-        this.currentReminder = this.remindPannel.createReminderObj();
-        this.sql.updateItem(this.currentReminder);
+        Screen.currentReminder = this.remindPannel.createReminderObj();
+        this.sql.updateItem();
     }
-    Screen(){
-        this.sql = new SQL();
+    public Screen(){
         this.setSize(this.frameWidth, this.frameWidth);
         this.setVisible(true);
         this.setLayout(new FlowLayout());
