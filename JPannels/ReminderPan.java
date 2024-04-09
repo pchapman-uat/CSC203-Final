@@ -36,6 +36,7 @@ public class ReminderPan extends JPanel{
         return new Reminder(id, title, content, date);
     }
 
+    // BUG: When setting values only date will update
     public void setValues(){
         
         this.setTitle(currentReminder.title);

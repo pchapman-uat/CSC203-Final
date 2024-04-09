@@ -8,6 +8,7 @@ import Classes.SQL;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 
+import JPannels.PreviewPan;
 import JPannels.ReminderPan;
 
 public class Screen extends JFrame{
@@ -16,6 +17,7 @@ public class Screen extends JFrame{
 
     ReminderPan remindPannel = new ReminderPan(frameHeight, frameWidth);
 
+    PreviewPan previewPan = new PreviewPan();
     JButton loadButton = new JButton();
 
     JButton saveButton = new JButton();
@@ -30,6 +32,7 @@ public class Screen extends JFrame{
         ArrayList<Reminder> reminders = this.sql.queryTable();
         Screen.currentReminder = reminders.get(0);
         this.remindPannel.setValues();
+        this.previewPan.updatePreview();
     }
     public void save() {
         this.sql.updateItem();
@@ -38,6 +41,7 @@ public class Screen extends JFrame{
         System.out.println("Upading Object...");
         this.remindPannel.datePannel.updateDate();
         this.remindPannel.setValues();
+        this.previewPan.updatePreview();
     }
     public Screen(){
         this.setSize(this.frameWidth, this.frameWidth);
@@ -56,6 +60,7 @@ public class Screen extends JFrame{
         this.add(this.loadButton);
         this.add(this.updateButton);
         this.add(this.remindPannel);
+        this.add(this.previewPan);
         this.update(null);
 
     }
