@@ -49,7 +49,7 @@ public class SQL {
                 pstmt.setString(1, currentReminder.title);
                 pstmt.setString(2, currentReminder.content);
                 pstmt.setInt(3, currentReminder.id);
-
+                // TODO: Update date values
                 pstmt.executeUpdate();
             }
         } catch (SQLException e) {

@@ -16,7 +16,7 @@ public class ReminderPan extends JPanel{
     JTextArea content = new JTextArea();
     JLabel date = new JLabel();
     JLabel id = new JLabel();
-    DatePan datePannel = new DatePan(this.frameHeight, this.frameWidth);
+    public DatePan datePannel = new DatePan(this.frameHeight, this.frameWidth);
 
     public ReminderPan(int frameHeight, int frameWidth) {
         this.frameHeight = frameHeight;

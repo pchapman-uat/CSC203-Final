@@ -1,9 +1,12 @@
 package JPannels;
 import javax.swing.*;
 
+import Classes.Date;
 import Classes.Reminder;
 
 import java.awt.FlowLayout;
+
+import static mainScreen.Screen.currentReminder;
 
 public class DatePan extends JPanel {
     private int frameWidth = 0;
@@ -36,6 +39,13 @@ public class DatePan extends JPanel {
         this.yearInput.setText(Integer.toString(reminder.date.year));
         this.monthInput.setText(Integer.toString(reminder.date.month));
         this.dayInput.setText(Integer.toString(reminder.date.day));
+    }
+
+    public void updateDate(){
+        int day = Integer.parseInt(this.dayInput.getText());
+        int month = Integer.parseInt(this.monthInput.getText());
+        int year = Integer.parseInt(this.yearInput.getText());
+        currentReminder.date.intDate(day, month, year);
     }
 
 }
