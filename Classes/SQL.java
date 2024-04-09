@@ -43,13 +43,17 @@ public class SQL {
 
     public void updateItem(){
         System.out.println("Updating Note");
-        String statement = "UPDATE reminders SET title = ?, content = ? WHERE id = ?";
+        String statement = "UPDATE reminders SET title = ?, content = ?, day = ?, month = ?, year = ?, date = ? WHERE id = ?";
         try (PreparedStatement pstmt = this.connection.prepareStatement(statement)) {
             {
                 pstmt.setString(1, currentReminder.title);
                 pstmt.setString(2, currentReminder.content);
-                pstmt.setInt(3, currentReminder.id);
                 // TODO: Update date values
+                pstmt.setInt(3, currentReminder.date.day);
+                pstmt.setInt(4, currentReminder.date.month);
+                pstmt.setInt(5, currentReminder.date.year);
+                pstmt.setString(6, currentReminder.date.dateString);
+                pstmt.setInt(7, currentReminder.id);
                 pstmt.executeUpdate();
             }
         } catch (SQLException e) {
