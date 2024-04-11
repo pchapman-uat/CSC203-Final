@@ -1,4 +1,4 @@
-package JPannels;
+package JPanels;
 import javax.swing.*;
 
 import Classes.Date;

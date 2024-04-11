@@ -4,12 +4,11 @@ import javax.swing.*;
 
 import Classes.Reminder;
 import Classes.SQL;
+import JPanels.PreviewPan;
+import JPanels.ReminderPan;
 
 import java.awt.FlowLayout;
 import java.util.ArrayList;
-
-import JPannels.PreviewPan;
-import JPannels.ReminderPan;
 
 public class Screen extends JFrame{
     int frameWidth = 400;
@@ -28,21 +27,25 @@ public class Screen extends JFrame{
 
     JButton addButton = new JButton();
 
+    JButton nextButton = new JButton();
+    
+    public static ArrayList<Reminder> loadedReminders = new ArrayList<>();
+    public static Integer currentIndex = 0;
     public static Reminder currentReminder = null;
 
     private SQL sql = new SQL();
-
-    public void load() {
-        ArrayList<Reminder> reminders = this.sql.queryTable();
-        Screen.currentReminder = reminders.get(0);
+    private void load(ArrayList<Reminder> reminders){
+        Screen.loadedReminders = reminders;
+        Screen.currentReminder = Screen.loadedReminders.get(Screen.currentIndex);
         this.remindPannel.setValues();
         this.previewPan.updatePreview();
     }
+
+    public void loadAll() {
+        this.load(this.sql.queryTable());
+    }
     public void loadToday() {
-        ArrayList<Reminder> reminders = this.sql.getTodayReminders();
-        Screen.currentReminder = reminders.get(0);
-        this.remindPannel.setValues();
-        this.previewPan.updatePreview();
+        this.load(this.sql.getTodayReminders());
     }
     public void save() {
         this.sql.updateItem();
@@ -56,11 +59,17 @@ public class Screen extends JFrame{
         this.remindPannel.setValues();
         this.previewPan.updatePreview();
     }
+    public void next(){
+        System.out.println("Next reminder");
+        Screen.currentIndex++;
+        if(Screen.currentIndex > Screen.loadedReminders.size() -1) Screen.currentIndex = 0;
+        this.load(Screen.loadedReminders);
+    }
     public Screen(){
         this.setSize(this.frameWidth, this.frameWidth);
         this.setVisible(true);
         this.setLayout(new FlowLayout());
-        this.loadButton.addActionListener(e -> this.load());
+        this.loadButton.addActionListener(e -> this.loadAll());
         this.loadButton.setText("Load");
 
         this.saveButton.setText("Save");
@@ -74,6 +83,10 @@ public class Screen extends JFrame{
 
         this.addButton.setText("Save As");
         this.addButton.addActionListener(e -> this.saveAs());
+
+        this.nextButton.setText("Next...");
+        this.nextButton.addActionListener(e -> this.next());
+        this.add(this.nextButton);
         this.add(this.addButton);
         this.add(this.todayButton);
         this.add(this.saveButton);

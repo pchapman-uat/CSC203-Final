@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.util.Calendar;
-
+import static javax.swing.JOptionPane.showMessageDialog;
 import static mainScreen.Screen.currentReminder;
 
 public class SQL {
@@ -52,7 +52,9 @@ public class SQL {
     }
     private ArrayList<Reminder> createReminder(ResultSet resultSet) throws SQLException{
         ArrayList<Reminder> queryReminders = new ArrayList<>();
+        int size = 0;
         while (resultSet.next()){
+            size++;
             int id = resultSet.getInt("id");
             String date =  resultSet.getString("date");
             String title = resultSet.getString("title");
@@ -60,6 +62,7 @@ public class SQL {
             queryReminders.add(new Reminder(id, title, content, date));
             System.out.println("Created Note onjects");
         }
+        if(size == 0) showMessageDialog(null,"No Reminders Found");
         return queryReminders;
     }
     public void addItem() {

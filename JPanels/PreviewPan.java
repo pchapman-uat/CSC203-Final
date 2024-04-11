@@ -1,6 +1,6 @@
-package JPannels;
+package JPanels;
 import static mainScreen.Screen.currentReminder;
-
+import static mainScreen.Screen.loadedReminders;
 import java.awt.Color;
 import java.awt.GridLayout;
 
@@ -24,7 +24,6 @@ public class PreviewPan extends JPanel {
         if(currentReminder != null){
             this.title.setText(this.spacing+currentReminder.title+this.spacing);
             this.date.setText(currentReminder.date.dateString);
-            this.content.setText(currentReminder.content);
         }
     }
 }

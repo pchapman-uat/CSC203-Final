@@ -1,4 +1,4 @@
-package JPannels;
+package JPanels;
 import Classes.Date;
 import Classes.Reminder;
 import static mainScreen.Screen.currentReminder;
