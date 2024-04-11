@@ -24,6 +24,10 @@ public class Screen extends JFrame{
 
     JButton updateButton = new JButton();
 
+    JButton todayButton = new JButton();
+
+    JButton addButton = new JButton();
+
     public static Reminder currentReminder = null;
 
     private SQL sql = new SQL();
@@ -34,8 +38,17 @@ public class Screen extends JFrame{
         this.remindPannel.setValues();
         this.previewPan.updatePreview();
     }
+    public void loadToday() {
+        ArrayList<Reminder> reminders = this.sql.getTodayReminders();
+        Screen.currentReminder = reminders.get(0);
+        this.remindPannel.setValues();
+        this.previewPan.updatePreview();
+    }
     public void save() {
         this.sql.updateItem();
+    }
+    public void saveAs() {
+        this.sql.addItem();
     }
     public void update(){
         System.out.println("Upading Object...");
@@ -56,6 +69,13 @@ public class Screen extends JFrame{
         this.updateButton.setText("Preview");
         this.updateButton.addActionListener(e -> this.update());
 
+        this.todayButton.setText("Testing");
+        this.todayButton.addActionListener(e -> this.loadToday());
+
+        this.addButton.setText("Save As");
+        this.addButton.addActionListener(e -> this.saveAs());
+        this.add(this.addButton);
+        this.add(this.todayButton);
         this.add(this.saveButton);
         this.add(this.loadButton);
         this.add(this.updateButton);
