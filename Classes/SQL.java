@@ -62,8 +62,12 @@ public class SQL {
             queryReminders.add(new Reminder(id, title, content, date));
             System.out.println("Created Note onjects");
         }
-        if(size == 0) showMessageDialog(null,"No Reminders Found");
-        return queryReminders;
+        if(size == 0) {
+            showMessageDialog(null,"No Reminders Found");
+            return null;
+        } else {
+            return queryReminders;
+        }
     }
     public void addItem() {
         System.out.println("Save as note");

@@ -35,10 +35,12 @@ public class Screen extends JFrame{
 
     private SQL sql = new SQL();
     private void load(ArrayList<Reminder> reminders){
-        Screen.loadedReminders = reminders;
-        Screen.currentReminder = Screen.loadedReminders.get(Screen.currentIndex);
-        this.remindPannel.setValues();
-        this.previewPan.updatePreview();
+        if(reminders != null){
+            Screen.loadedReminders = reminders;
+            Screen.currentReminder = Screen.loadedReminders.get(Screen.currentIndex);
+            this.remindPannel.setValues();
+            this.previewPan.updatePreview();
+        }
     }
 
     public void loadAll() {
