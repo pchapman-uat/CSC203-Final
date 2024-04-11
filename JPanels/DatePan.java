@@ -42,10 +42,29 @@ public class DatePan extends JPanel {
     }
 
     public void updateDate(){
-        String test = this.dayInput.getText();
-        int day = Integer.parseInt(this.dayInput.getText());
-        int month = Integer.parseInt(this.monthInput.getText());
-        int year = Integer.parseInt(this.yearInput.getText());
+        Date today = new Date();
+        today.todayDate();
+        int day = today.day;
+        int month = today.month;
+        int year = today.year;
+        
+        try {
+            day = Integer.parseInt(this.dayInput.getText());
+        } catch (NumberFormatException e){
+            
+        }
+        try {
+            month = Integer.parseInt(this.monthInput.getText());
+        }catch (NumberFormatException e){
+            
+        }
+        try {
+            year = Integer.parseInt(this.yearInput.getText());
+        }catch (NumberFormatException e){
+            
+        }
+        
+       
         currentReminder.date.intDate(day, month, year);
     }
 

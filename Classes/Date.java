@@ -1,5 +1,7 @@
 package Classes;
 
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 public class Date {
     // Declare the variables
     public int day;
@@ -23,7 +25,13 @@ public class Date {
         this.month = Integer.parseInt(dateArr[0]);
         this.day = Integer.parseInt(dateArr[1]);
         this.year = Integer.parseInt(dateArr[2]);
-        this.dateString = this.day + "/" + this.month + "/" + this.year;
+        this.dateString = this.month + "/" + this.day + "/" + this.year;
+    }
+    public void todayDate(){
+        java.util.Date now = Calendar.getInstance().getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yyyy");
+        String formatedDate = dateFormat.format(now);
+        this.stringDate(formatedDate);
     }
 
 }
