@@ -57,6 +57,10 @@ public class Screen extends JFrame{
     }
     public void update(){
         System.out.println("Upading Object...");
+        if(Screen.loadedReminders.size() == 0){
+            Screen.loadedReminders.add(new Reminder(1,"dummy","dummy","04/22/2024"));
+            Screen.currentReminder = loadedReminders.get(0);
+        }
         this.remindPannel.datePannel.updateDate();
         this.remindPannel.setValues();
         this.previewPan.updatePreview();

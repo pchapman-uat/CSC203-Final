@@ -42,6 +42,7 @@ public class DatePan extends JPanel {
     }
 
     public void updateDate(){
+        String test = this.dayInput.getText();
         int day = Integer.parseInt(this.dayInput.getText());
         int month = Integer.parseInt(this.monthInput.getText());
         int year = Integer.parseInt(this.yearInput.getText());
