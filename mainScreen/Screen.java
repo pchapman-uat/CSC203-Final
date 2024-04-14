@@ -49,6 +49,7 @@ public class Screen extends JFrame{
         this.sql.updateItem();
     }
     public void saveAs() {
+        this.previewPan.updateReminder();
         this.sql.addItem();
     }
     public void next(){
@@ -61,6 +62,7 @@ public class Screen extends JFrame{
         Screen.loadedReminders = new ArrayList<Reminder>();
 
         Screen.currentReminder = new Reminder(-1, "<Title>", "<Content>", "0/0/0", WHITE);
+        Screen.currentReminder.priorityString = "WHITE";
         Screen.currentReminder.date.todayDate();
         Screen.currentIndex = 0;
         Screen.loadedReminders.add(Screen.currentReminder);

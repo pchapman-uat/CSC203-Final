@@ -22,5 +22,10 @@ public class Reminder {
         this.date = new Date();
         this.date.stringDate(date);
         this.priority = priority;
+
+        
+    }
+    public void setPriorityString(String priorityString) {
+        this.priorityString = priorityString;
     }
 }

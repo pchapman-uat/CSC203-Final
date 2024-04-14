@@ -63,9 +63,13 @@ public class SQL {
             String date =  resultSet.getString("date");
             String title = resultSet.getString("title");
             String content = resultSet.getString("content");
-            Color priority = colors.allColors.get(resultSet.getString("priority"));
-            queryReminders.add(new Reminder(id, title, content, date, priority));
-            System.out.println("Created Note onjects");
+            String priorityString = resultSet.getString("priority");
+            Color priority = colors.allColors.get(priorityString);
+            Reminder reminder = new Reminder(id, title, content, date, priority);
+            reminder.setPriorityString(priorityString);
+            queryReminders.add(reminder);
+
+            System.out.println("Created Note objects");
         }
         if(size == 0) {
             showMessageDialog(null,"No Reminders Found");

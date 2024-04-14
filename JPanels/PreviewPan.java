@@ -42,6 +42,7 @@ public class PreviewPan extends JPanel {
         content.setWrapStyleWord(true); // Enable word wrapping
         this.add(content, gbc);
 
+        this.priority.setSelectedIndex(6);
         this.priority.addActionListener(e -> this.colorHandle());
         gbc.gridy++;
         this.add(this.priority, gbc);
@@ -71,4 +72,5 @@ public class PreviewPan extends JPanel {
         currentReminder.content = this.content.getText();
         currentReminder.date.stringDate(this.date.getText());
     }
+
 }
