@@ -1,10 +1,13 @@
 package JPanels;
 import static mainScreen.Screen.currentReminder;
 import static mainScreen.Screen.frameWidth;
-import java.awt.Color;
+import static Values.colors.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.*;
+
+import Values.colors;
+
 import java.awt.*;
 
 public class PreviewPan extends JPanel {
@@ -13,7 +16,10 @@ public class PreviewPan extends JPanel {
     public JTextArea content = new JTextArea();
     public JTextArea date = new JTextArea();
     public JLabel space = new JLabel(spacing.repeat(4));
-    
+    public JComboBox<String> priority = new JComboBox<String>(colors.allColors.keySet().toArray(new String[0]));
+
+
+
     public PreviewPan(){
         this.setBackground(new Color(255, 255, 255));
         this.setLayout(new GridBagLayout()); // Use GridBagLayout for flexible placement
@@ -36,19 +42,28 @@ public class PreviewPan extends JPanel {
         content.setLineWrap(true); // Enable line wrapping
         content.setWrapStyleWord(true); // Enable word wrapping
         this.add(content, gbc);
-        
+
+        this.priority.addActionListener(e -> this.colorHandle());
+        gbc.gridy++;
+        this.add(this.priority, gbc);
+
         // Add space
         gbc.gridy++;
         this.add(space, gbc);
 
         this.updatePreview();
     }
-    
+    public void colorHandle() {
+        currentReminder.priority = colors.allColors.get(this.priority.getSelectedItem());
+        currentReminder.priorityString = this.priority.getSelectedItem().toString();
+        this.updatePreview();
+    }
     public void updatePreview(){
         if(currentReminder != null){
             this.title.setText(currentReminder.title);
             this.date.setText(currentReminder.date.dateString);
             this.content.setText(currentReminder.content);
+            this.setBackground(currentReminder.priority);
         }
     }
     

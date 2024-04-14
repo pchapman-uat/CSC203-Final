@@ -1,9 +1,13 @@
 package Classes;
+import java.awt.Color;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.util.Calendar;
+
+import Values.colors;
+
 import static javax.swing.JOptionPane.showMessageDialog;
 import static mainScreen.Screen.currentReminder;
 
@@ -59,7 +63,8 @@ public class SQL {
             String date =  resultSet.getString("date");
             String title = resultSet.getString("title");
             String content = resultSet.getString("content");
-            queryReminders.add(new Reminder(id, title, content, date));
+            Color priority = colors.allColors.get(resultSet.getString("priority"));
+            queryReminders.add(new Reminder(id, title, content, date, priority));
             System.out.println("Created Note onjects");
         }
         if(size == 0) {
@@ -71,7 +76,7 @@ public class SQL {
     }
     public void addItem() {
         System.out.println("Save as note");
-        String statement = "INSERT INTO reminders (title, content, date, day, month, year) VALUES (?,?,?,?,?,?)";
+        String statement = "INSERT INTO reminders (title, content, date, day, month, year, priority) VALUES (?,?,?,?,?,?,?)";
         try (PreparedStatement pstmt = this.connection.prepareStatement(statement)) {
             pstmt.setString(1, currentReminder.title);
             pstmt.setString(2, currentReminder.content);
@@ -79,6 +84,7 @@ public class SQL {
             pstmt.setInt(4, currentReminder.date.day);
             pstmt.setInt(5, currentReminder.date.month);
             pstmt.setInt(6, currentReminder.date.year);
+            pstmt.setString(7, currentReminder.priorityString);
             pstmt.executeUpdate();
             try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
@@ -95,7 +101,7 @@ public class SQL {
     }
     public void updateItem(){
         System.out.println("Updating Note");
-        String statement = "UPDATE reminders SET title = ?, content = ?, day = ?, month = ?, year = ?, date = ? WHERE id = ?";
+        String statement = "UPDATE reminders SET title = ?, content = ?, day = ?, month = ?, year = ?, date = ?, priority = ? WHERE id = ?";
         try (PreparedStatement pstmt = this.connection.prepareStatement(statement)) {
             {
                 pstmt.setString(1, currentReminder.title);
@@ -104,7 +110,9 @@ public class SQL {
                 pstmt.setInt(4, currentReminder.date.month);
                 pstmt.setInt(5, currentReminder.date.year);
                 pstmt.setString(6, currentReminder.date.dateString);
-                pstmt.setInt(7, currentReminder.id);
+                pstmt.setString(7, currentReminder.priorityString);
+                pstmt.setInt(8, currentReminder.id);
+   
                 pstmt.executeUpdate();
             }
         } catch (SQLException e) {

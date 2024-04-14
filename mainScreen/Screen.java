@@ -5,6 +5,7 @@ import javax.swing.*;
 import Classes.Reminder;
 import Classes.SQL;
 import JPanels.PreviewPan;
+import static Values.colors.*;
 
 import java.awt.FlowLayout;
 import java.util.ArrayList;
@@ -59,13 +60,14 @@ public class Screen extends JFrame{
     public void newNote(){
         Screen.loadedReminders = new ArrayList<Reminder>();
 
-        Screen.currentReminder = new Reminder(-1, "<Title>", "<Content>", "0/0/0");
+        Screen.currentReminder = new Reminder(-1, "<Title>", "<Content>", "0/0/0", WHITE);
         Screen.currentReminder.date.todayDate();
         Screen.currentIndex = 0;
         Screen.loadedReminders.add(Screen.currentReminder);
         this.previewPan.updatePreview();
     }
     public Screen(){
+        this.newNote();
         this.setSize(Screen.frameWidth, Screen.frameWidth);
         this.setVisible(true);
         this.setLayout(new FlowLayout());
@@ -89,7 +91,6 @@ public class Screen extends JFrame{
         this.add(this.saveButton);
         this.add(this.loadButton);
         this.add(this.previewPan);
-        this.newNote();
         this.update(null);
         
 
