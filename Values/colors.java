@@ -1,7 +1,6 @@
 package Values;
 import java.awt.Color;
 import java.util.Map;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class colors {

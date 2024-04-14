@@ -1,7 +1,6 @@
 package JPanels;
 import static mainScreen.Screen.currentReminder;
 import static mainScreen.Screen.frameWidth;
-import static Values.colors.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.*;
