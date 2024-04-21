@@ -95,6 +95,7 @@ public class PreviewPan extends JPanel {
         currentReminder.title = this.title.getText();
         currentReminder.content = this.content.getText();
         currentReminder.date.stringDate(this.date.getText());
+        this.setBackground(currentReminder.priority);
     }
 
 }
