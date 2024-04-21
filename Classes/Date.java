@@ -1,6 +1,8 @@
+// Package with the classes folder
 package Classes;
-
+// Import the Java Calendar class
 import java.util.Calendar;
+// Import the Java Date class
 import java.text.SimpleDateFormat;
 public class Date {
     // Declare the variables
@@ -26,10 +28,14 @@ public class Date {
         this.year = Integer.parseInt(dateArr[2]);
         this.dateString = this.month + "/" + this.day + "/" + this.year;
     }
+    // Get todays date
     public void todayDate(){
+        // Get the current date
         java.util.Date now = Calendar.getInstance().getTime();
+        // Format the date
         SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yyyy");
         String formatedDate = dateFormat.format(now);
+        // Update using the string date
         this.stringDate(formatedDate);
     }
 

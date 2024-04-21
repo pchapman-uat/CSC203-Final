@@ -1,9 +1,12 @@
+// Package with the values folder
 package Values;
+// Import Java colors, Map, and LinkedHashMap classes
 import java.awt.Color;
 import java.util.Map;
 import java.util.LinkedHashMap;
 
 public class colors {
+    // Create a static color object
     public static final Color RED = new Color(255, 0, 0);
     public static final Color ORANGE = new Color(255, 128, 0);
     public static final Color YELLOW = new Color(255, 255, 0);
@@ -12,6 +15,7 @@ public class colors {
     public static final Color PURPLE = new Color(128, 0, 128);
     public static final Color WHITE = new Color(255, 255, 255);
     public static final Color BLACK = new Color(0, 0, 0);
+    // Create a static map of colors
     public static final Map<String, Color> allColors = new LinkedHashMap<String, Color>() {
         {
             put("RED", RED);
