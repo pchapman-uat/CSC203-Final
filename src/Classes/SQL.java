@@ -1,5 +1,5 @@
 // Package with the Classes folder
-package Classes;
+package src.Classes;
 // Import the java Color classes
 import java.awt.Color;
 // Import SQL Clases

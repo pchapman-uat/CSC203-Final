@@ -3,10 +3,9 @@ package src.mainScreen;
 
 // Import all JavaX swing classes
 import javax.swing.*;
-// Import the Reminder class
-import Classes.Reminder;
-// Import the SQL class
-import Classes.SQL;
+
+import src.Classes.Reminder;
+import src.Classes.SQL;
 import src.JPanels.PreviewPan;
 
 import static src.Values.colors.*;

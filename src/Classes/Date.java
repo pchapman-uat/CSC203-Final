@@ -1,5 +1,5 @@
 // Package with the classes folder
-package Classes;
+package src.Classes;
 // Import the Java Calendar class
 import java.util.Calendar;
 // Import the Java Date class

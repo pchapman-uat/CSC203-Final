@@ -1,5 +1,5 @@
 // Package with the classes folder
-package Classes;
+package src.Classes;
 import static src.Values.colors.*;
 
 // Import the java color class
