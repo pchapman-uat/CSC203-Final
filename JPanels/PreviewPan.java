@@ -56,7 +56,7 @@ public class PreviewPan extends JPanel {
     public void colorHandle() {
         currentReminder.priority = colors.allColors.get(this.priority.getSelectedItem());
         currentReminder.priorityString = this.priority.getSelectedItem().toString();
-        this.updatePreview();
+        this.updateReminder();
     }
     public void updatePreview(){
         if(currentReminder != null){
