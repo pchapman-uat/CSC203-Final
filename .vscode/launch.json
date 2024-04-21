@@ -14,7 +14,7 @@
             "type": "java",
             "name": "Main",
             "request": "launch",
-            "mainClass": "Main",
+            "mainClass": "src/Main",
             "projectName": "CSC203-Final_b6e33a25"
         }
     ]

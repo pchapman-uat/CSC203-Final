@@ -10,12 +10,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 // Import the calandar class
 import java.util.Calendar;
-// Import the custom Color class
-import Values.colors;
+
+import src.Values.colors;
+
 // Import the show message dialog function
 import static javax.swing.JOptionPane.showMessageDialog;
-// Import the current reminder
-import static mainScreen.Screen.currentReminder;
+import static src.mainScreen.Screen.currentReminder;
 
 public class SQL {
     // Declare the connection and statement

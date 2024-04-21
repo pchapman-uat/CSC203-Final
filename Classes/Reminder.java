@@ -1,9 +1,9 @@
 // Package with the classes folder
 package Classes;
+import static src.Values.colors.*;
+
 // Import the java color class
 import java.awt.Color;
-// Import the custom Color class
-import static Values.colors.*;
 public class Reminder {
     // Declare the id, title, content, date, and priority
     public int id;

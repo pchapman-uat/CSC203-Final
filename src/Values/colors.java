@@ -1,5 +1,5 @@
 // Package with the values folder
-package Values;
+package src.Values;
 // Import Java colors, Map, and LinkedHashMap classes
 import java.awt.Color;
 import java.util.Map;

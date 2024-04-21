@@ -1,16 +1,15 @@
 // Package with the JPanels folder
-package JPanels;
-// Import the current reminder
-import static mainScreen.Screen.currentReminder;
-// Import the frame width
-import static mainScreen.Screen.frameWidth;
+package src.JPanels;
 // Import the Grid format class and Swing
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.*;
 
-// Import the color values
-import Values.colors;
+import src.Values.colors;
+
+import static src.mainScreen.Screen.currentReminder;
+import static src.mainScreen.Screen.frameWidth;
+
 // Import Java AWT classes
 import java.awt.*;
 

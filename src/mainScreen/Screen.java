@@ -1,5 +1,5 @@
 // Package with teh mainScreen folder
-package mainScreen;
+package src.mainScreen;
 
 // Import all JavaX swing classes
 import javax.swing.*;
@@ -7,10 +7,9 @@ import javax.swing.*;
 import Classes.Reminder;
 // Import the SQL class
 import Classes.SQL;
-// Import the PreviewPan class
-import JPanels.PreviewPan;
-// Import the color values
-import static Values.colors.*;
+import src.JPanels.PreviewPan;
+
+import static src.Values.colors.*;
 
 // Import the flow layout
 import java.awt.FlowLayout;

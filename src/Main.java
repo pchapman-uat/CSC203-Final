@@ -1,5 +1,6 @@
+package src;
 // Import the main Screen Class
-import mainScreen.Screen;
+import src.mainScreen.Screen;
 
 public class Main {
     // On application start create a new Screen object
