@@ -120,7 +120,7 @@ public class Screen extends JFrame{
         this.saveButton.setText("Save");
         this.saveButton.addActionListener(e -> this.save());
 
-        this.todayButton.setText("Testing");
+        this.todayButton.setText("Today");
         this.todayButton.addActionListener(e -> this.loadToday());
 
         this.addButton.setText("Save As");
