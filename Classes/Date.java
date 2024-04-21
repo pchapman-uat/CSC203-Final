@@ -13,7 +13,6 @@ public class Date {
     public void intDate(int day, int month, int year) {
         this.day = day;
         this.month = month;
-        // NOTE: Year is not formated, meaning the year is not always 4 digits long
         this.year = year;
         this.dateString = this.day + "/" + this.month + "/" + this.year;
     }

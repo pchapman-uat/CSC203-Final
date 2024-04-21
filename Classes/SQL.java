@@ -49,7 +49,6 @@ public class SQL {
             ResultSet resultSet = this.statement.executeQuery(test);
             allReminders = this.createReminder(resultSet);
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return allReminders;
@@ -120,7 +119,6 @@ public class SQL {
                 pstmt.executeUpdate();
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } ;
     }
